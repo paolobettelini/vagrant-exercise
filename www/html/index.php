@@ -41,6 +41,15 @@
         <?php endwhile; ?>
     </tbody>
 </table>
+<br>
+<h1>Connection stats</h1>
+<?php
+    $info = $connection->get_connection_stats();
+
+    foreach ($info as $key => $value) {
+        echo $key . ": " . "\"" . $value . "\"<br>";
+    }
+?>
 <script>
     function orderBy(field) {
         let a = document.createElement('a');
