@@ -1,6 +1,7 @@
 <?php 
 class Database {
 
+    // Database credentials
     static $user = "vagrant";
     static $host = "10.10.20.15";
     static $port = 3306;
@@ -33,7 +34,7 @@ class Database {
         if (self::$connection->connect_error) {
             die('Connection error: ' . self::$connection->connect_error);
         }
-            
+
         return self::$connection;
     }
 
