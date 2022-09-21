@@ -12,12 +12,13 @@ apt-get install mysql-server -y
 
 # Enable remote connections
 echo "Updating bind address"
-sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
+sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # Restart MySQL
 echo "Restarting mysql service"
 systemctl restart mysql
 
+# Executing DDL
 echo "Creating new schema '$DBNAME'"
 
 mysql -uroot -e "CREATE USER IF NOT EXISTS '$DBUSER'@'%' IDENTIFIED BY '$DBPASSWD'"
@@ -34,13 +35,8 @@ CREATE TABLE persona (
 );
 EOF
 
-mysql -uroot $DBNAME -e "INSERT INTO persona (nome, cognome, citta) VALUES('Paolo', 'Bettelini', 'Caslano');"
-mysql -uroot $DBNAME -e "INSERT INTO persona (nome, cognome, citta) VALUES('Damian', 'Campesi', 'Claro');"
-mysql -uroot $DBNAME -e "INSERT INTO persona (nome, cognome, citta) VALUES('Erik', 'Pelloni', 'Bioggio');"
-
-# Install firewall
-apt install ufw -y
-ufw --force enable
-ufw allow 3306
+mysql -uroot $DBNAME -e "INSERT INTO persona (nome, cognome, citta) VALUES('Paolo', 'Bettelini', 'Ticino');"
+mysql -uroot $DBNAME -e "INSERT INTO persona (nome, cognome, citta) VALUES('Damian', 'Campesi', 'Ticino');"
+mysql -uroot $DBNAME -e "INSERT INTO persona (nome, cognome, citta) VALUES('Erik', 'Pelloni', 'Locarno');"
 
 echo "MySql provisioning - end"

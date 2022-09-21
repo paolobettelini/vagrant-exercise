@@ -2,7 +2,7 @@
 class Database {
 
     static $user = "vagrant";
-    static $host = "127.0.0.1";
+    static $host = "10.10.20.15";
     static $port = 3306;
     static $password = "vagrantpass";
     static $dbname = "vagrant";

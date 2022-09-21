@@ -1,0 +1,6 @@
+# Vagrant
+.vagrant
+
+# Other
+*.pdf
+*.txt

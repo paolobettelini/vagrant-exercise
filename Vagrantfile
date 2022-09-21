@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
     
     BOX_CHK_UPDATE = false
     SSH_INSERT_KEY = true
-    PROXY_ENABLE = false
+    PROXY_ENABLE = true
     VB_CHK_UPDATE = false
 
     PROXY_HTTP = "http://10.0.2.2:7777"
@@ -51,8 +51,9 @@ Vagrant.configure("2") do |config|
             subconfig.vbguest.auto_update = VB_CHK_UPDATE
         end
 
-        subconfig.vm.synced_folder ".", "/vagrant"
-        subconfig.vm.provision "shell", inline: "cp -r /vagrant/www/ /var"
+        # subconfig.vm.synced_folder ".", "/vagrant"
+        # subconfig.vm.provision "shell", inline: "cp -r /vagrant/www/ /var"
+        subconfig.vm.synced_folder "www", "/var/www"
 
         # Provisioning
         subconfig.vm.provision "shell", path: "./scripts/provision_update.sh"

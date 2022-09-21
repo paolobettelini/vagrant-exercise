@@ -2,7 +2,7 @@
 
 echo "APT provisioning - begin"
 
-# Update
+# Update packages
 apt-get update -y
 
 echo "APT provisioning - end"
